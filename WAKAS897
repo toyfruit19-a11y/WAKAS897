@@ -1,0 +1,680 @@
+game.Players:Chat("startergive me delete")
+game.Players:Chat("startergive me resize")
+game.Players:Chat("startergive me move")
+wait(0.1)
+byened = {"Players you hate"}
+for _,p in pairs(game.Players:GetChildren()) do
+   for _,v in pairs(byened) do
+      if p.Name==v then
+         repeat wait() until game.Players.LocalPlayer.Backpack:FindFirstChild("Delete")
+         game.Players.LocalPlayer.Backpack:WaitForChild("Delete"):WaitForChild("delete"):FireServer(p)
+      end 
+   end
+end
+game.Players.PlayerAdded:Connect(function(p)
+   for _,v in pairs(byened) do
+      if p.Name==v then
+         repeat wait() until game.Players.LocalPlayer.Backpack:FindFirstChild("Delete")
+         game.Players.LocalPlayer.Backpack:WaitForChild("Delete"):WaitForChild("delete"):FireServer(p)
+      end 
+   end
+end)
+
+
+plr = game.Players.LocalPlayer
+prefix = ":"
+banned = {}
+
+function GetPlayer(String) 
+ local Found = {}
+ local strl = String:lower()
+ if strl == "all" then
+     for i,v in pairs(game.Players:GetPlayers()) do
+         table.insert(Found,v)
+     end
+ elseif strl == "others" then
+     for i,v in pairs(game.Players:GetPlayers()) do
+         if v.Name ~= game.Players.LocalPlayer.Name then
+             table.insert(Found,v)
+         end
+     end   
+elseif strl == "me" then
+     for i,v in pairs(game.Players:GetPlayers()) do
+         if v.Name == game.Players.LocalPlayer.Name then
+             table.insert(Found,v)
+         end
+     end  
+ else
+     for i,v in pairs(game.Players:GetPlayers()) do
+         if v.Name:lower():sub(1, #String) == String:lower() then
+             table.insert(Found,v)
+         end
+     end    
+ end
+ return Found    
+end
+
+warn("Written by: PsychoticIntentions")
+warn("Auto-Rejoin by: ggggjjjjgj")
+warn("Written by: GigaMemeGod")
+warn("Written by: swazzer")
+warn("EBIC COMMANDS")
+print(";resetmap --resets the map, use this if original baseplate is still in workspace")
+print(";fixmap --use this if original baseplate is gone")
+print(";protectadmin --if your in a troll mood")
+print(";adminland --makes the baseplate an admin pad")
+print(";set --turns on anti-unpunish, sometimes malfuntions")
+print(";unset --turns anti-unpunish off")
+print(";ktools --gears yourself OP upgraded gears")
+print(";dtools --gears that can delete parts in the workspace")
+print("america --gears yourself an american hammer, yee yeeee")
+print(";laserk --gears yourself a laser kicking gear")
+print(";gun --gears yourself a kick gun")
+print(";gun2 --gears yourself a kick gun")
+print(";clicktodelete --to use this hover your mouse over soemthing in workspace, and press q")
+print(";clicktokick --hover your mouse over someone and press q")
+print(";glassman --idea credit goes to ggggjjjjgj")
+print(";shatter --breaks the glassman script, works about 85 percent of the time.")
+print(";dark --safer version of glassman, cause glassman sometimes becomes autistic")
+print(";base --backup, backup baseplate")
+print(";base2 --all the way through 11")
+print(";basecheck --if your lazy af")
+print(";lagworld --if you have a potatoe pc, fly away from the map before you run this command")
+print(";lavaisland --just try it")
+print(";undo --not the best.. but better version will be released in the next update")
+print(";lavacross --one of my favs")
+print(";bodykick --run into someone to kick them")
+print(";unbodykick --turns it off")
+warn("USEFUL COMMMANDS")
+print("sk/ --server kicks a user")
+print("sb/ --server bans a user")
+print("s/on  --enables server-lock")
+print("s/off -- disables server-lock")
+print("b/p --resets the original baseplate to original spot")
+print("f/p --backup baseplate if original is deleted")
+print(";creepy --creepy visualizer")
+print(";rere --loads ebic visualizer --credits to rage --  rage is a bitch")
+print(";auto --loads the auto visualizer without a song attached to it")
+print("r/j -- rejoins the game")
+print("n/ --disables the visualizers")
+print(";right --just try it and find out")
+print(";left")
+print("a/ --tp you to admin")
+print(";shutdown --pretty self-explanatory x.x")
+warn("OTHER COMMANDS")
+print(";gears --gears yourself some of my favorite gears")
+print("r/ --removes others tools")
+print("g/ --gods yourself and ff's yourself")
+print(";turkey --idk why i did this but okey")
+print(";death --:|")
+print(";darkness --creates a dark surrounding")
+print(";giant --makes yourself gigantic")
+print(";atom --got bored and created this")
+------------------------------------------------------------------------------------------------------------
+plr.Chatted:Connect(function(msg)
+if string.sub(msg, 1, 3) == ("sk/") then
+for i,v in pairs(GetPlayer(string.sub(msg, 4))) do
+local remote = game.Players.LocalPlayer.Backpack:WaitForChild("Delete"):WaitForChild("delete")
+remote:FireServer(v)
+wait()
+game.Players:Chat("h Server Kicked "..v.Name)
+end
+end
+end)
+
+
+slock = false
+plr = game.Players.LocalPlayer
+plr.Chatted:Connect(function(ok)
+if string.sub(ok, 1) == ("a/") then
+now = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=game.Workspace.Terrain.GameFolder.Admin.Pads['Touch to get admin'].Head.CFrame
+wait(0.2)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = now
+end
+end)
+
+
+plr.Chatted:connect(function(lol)
+if string.sub(lol, 1) == ("s/on") then
+slock = true
+game.Players:Chat("h Server Locked.")
+end
+end)
+
+plr.Chatted:connect(function(lol)
+if string.sub(lol, 1) == (";shutdown") then
+wait(.1)
+game.Players:Chat("h Cleansing Server...")
+wait(2)
+game.Players:Chat("sk/others")
+wait(.5)
+game.Players:Chat("sk/me")
+end
+end)
+
+plr.Chatted:Connect(function(oyes)
+if string.sub(oyes, 1) == ("s/off") then
+slock = false
+game.Players:Chat("h Removed Server Lock.")
+end
+end)
+
+game.Players.PlayerAdded:connect(function(xDDD)
+if slock == true then
+local remote = game.Players.LocalPlayer.Backpack:WaitForChild("Delete"):WaitForChild("delete")
+remote:FireServer(xDDD)
+wait()
+end
+end)
+
+plr.Chatted:Connect(function(msg)
+if string.sub(msg, 1, 3) == ("sb/") then
+for i,v in pairs(GetPlayer(string.sub(msg, 4))) do
+table.insert(banned,v.Name)
+local remote = game.Players.LocalPlayer.Backpack:WaitForChild("Delete"):WaitForChild("delete")
+remote:FireServer(v)
+wait()
+game.Players:Chat("h Server Banned "..v.Name)
+end
+end
+end)
+
+game.Players.PlayerAdded:connect(function(x)
+wait(0.25)
+for i,v in pairs(banned) do
+if x.Name == v then
+local remote = game.Players.LocalPlayer.Backpack:WaitForChild("Delete"):WaitForChild("delete")
+remote:FireServer(x)
+wait()
+end
+end
+end)
+
+game.Players.LocalPlayer.Chatted:Connect(function(mov)
+if string.sub(mov, 1) == (";right") then
+for i,v in pairs(game.Workspace.Terrain.GameFolder.Workspace["Admin Dividers"]:GetChildren()) do
+    game.Players.LocalPlayer.Backpack.Move.setPos:FireServer(v, v.CFrame + Vector3.new(-100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)) 
+end
+for i,v in pairs(game.Workspace.Terrain.GameFolder.Workspace["Obby"]:GetChildren()) do
+    game.Players.LocalPlayer.Backpack.Move.setPos:FireServer(v, v.CFrame + Vector3.new(-100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)) 
+end
+for i,v in pairs(game.Workspace.Terrain.GameFolder.Workspace["Building Bricks"]:GetChildren()) do
+    game.Players.LocalPlayer.Backpack.Move.setPos:FireServer(v, v.CFrame + Vector3.new(-100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)) 
+end
+
+for i,v in pairs(game.Workspace.Terrain.GameFolder.Workspace["Obby Box"]:GetChildren()) do
+    game.Players.LocalPlayer.Backpack.Move.setPos:FireServer(v, v.CFrame + Vector3.new(-100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)) 
+end
+
+for i,v in pairs(game.Workspace.Terrain.GameFolder.Workspace["Basic House"]:GetChildren()) do
+    game.Players.LocalPlayer.Backpack.Move.setPos:FireServer(v, v.CFrame + Vector3.new(-100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)) 
+end
+end
+end)
+
+
+game.Players.LocalPlayer.Chatted:Connect(function(mov)
+if string.sub(mov, 1) == (";left") then
+for i,v in pairs(game.Workspace.Terrain.GameFolder.Workspace["Admin Dividers"]:GetChildren()) do
+    game.Players.LocalPlayer.Backpack.Move.setPos:FireServer(v, v.CFrame + Vector3.new(100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)) 
+end
+for i,v in pairs(game.Workspace.Terrain.GameFolder.Workspace["Obby"]:GetChildren()) do
+    game.Players.LocalPlayer.Backpack.Move.setPos:FireServer(v, v.CFrame + Vector3.new(100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)) 
+end
+for i,v in pairs(game.Workspace.Terrain.GameFolder.Workspace["Building Bricks"]:GetChildren()) do
+    game.Players.LocalPlayer.Backpack.Move.setPos:FireServer(v, v.CFrame + Vector3.new(100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)) 
+end
+
+for i,v in pairs(game.Workspace.Terrain.GameFolder.Workspace["Obby Box"]:GetChildren()) do
+    game.Players.LocalPlayer.Backpack.Move.setPos:FireServer(v, v.CFrame + Vector3.new(100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)) 
+end
+
+for i,v in pairs(game.Workspace.Terrain.GameFolder.Workspace["Basic House"]:GetChildren()) do
+    game.Players.LocalPlayer.Backpack.Move.setPos:FireServer(v, v.CFrame + Vector3.new(100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)) 
+end
+end
+end)
+
+------------------------------------------------------------------------------------------------------------
+
+
+
+------------------------------------------------------------------------------------------------------------
+
+plr.Chatted:Connect(function(Fly)
+if string.sub(Fly, 1, 3) == ("u/w") then
+wait(.1)
+Game.Players:Chat("btools me")
+wait(.1)
+Game.Players:Chat("h Unlocked Workspace")
+end
+end)
+
+game.Players.LocalPlayer.Chatted:connect(function(msg)
+if msg == "u/w" or msg == ":unlockws" or msg ==":unlock" then
+game.Players:Chat("h Unlocked Workspace")
+for i,v in pairs(game:GetDescendants()) do
+if v:IsA("BasePart") then
+v.Locked = false
+end
+end
+end
+end)
+
+game.Players.LocalPlayer.Chatted:connect(function(msg)
+    if msg == ":unlockws" or msg == ":unlock" then
+wait(.1)
+for i,v in pairs(game:GetDescendants()) do
+if v:IsA("BasePart") then
+v.Locked = false
+end
+end
+end
+end)
+
+game.Players.LocalPlayer.Chatted:connect(function(Lii)
+if string.sub(Lii, 1, 8) == ("static") then
+game.Players:Chat("particle me p")
+end
+end)
+
+game.Players.LocalPlayer.Chatted:connect(function(iiL)
+if string.sub(iiL, 1, 8) == ("r/") then
+game.Players:Chat("removetools others")
+end
+end)
+
+
+plr.Chatted:Connect(function(PTY)
+if string.sub(PTY, 1, 8) == (";gears") then
+Game.Players:Chat("gear me 98346415")
+Game.Players:Chat("gear me 77443461")
+Game.Players:Chat("gear me 72644644")
+Game.Players:Chat("gear me 169669671")
+Game.Players:Chat("gear me 77443491")
+Game.Players:Chat("gear me 18474459")
+end
+end)
+
+plr.Chatted:Connect(function(Fly)
+if string.sub(Fly, 1, 2) == ("b/") then
+wait(.1)
+Game.Players:Chat("btools me")
+end
+end)
+
+plr.Chatted:Connect(function(PTY)
+if string.sub(PTY, 1, 2) == ("g/") then
+Game.Players:Chat("god me")
+Game.Players:Chat("ff me")
+end
+end)
+
+plr.Chatted:Connect(function(PTY)
+if string.sub(PTY, 1, 2) == ("/") then
+Game.Players:Chat("fly me")
+end
+end)
+
+plr.Chatted:Connect(function(PTY)
+if string.sub(PTY, 1, 3) == ("re/") then
+Game.Players:Chat("reload me")
+end
+end)
+
+plr.Chatted:Connect(function(LoO)
+if game:GetService("Players").LocalPlayer == nil then
+game:GetService("ScriptContext").ScriptsDisabled=true
+for i,v in pairs(GetPlayer(string.sub(LoO, 4))) do
+local remote = game.Players.LocalPlayer.Backpack:WaitForChild("Delete"):WaitForChild("delete")
+remote:FireServer(v)
+wait()
+game.Players:Chat("h Server Kicked "..v.Name)
+end
+end
+end)
+
+plr.Chatted:Connect(function(chR)
+if string.sub(chR, 1, 3) == ("ch/") then
+Game.Players:Chat("char all f")
+end
+end)
+
+plr.Chatted:Connect(function(Fly)
+if string.sub(Fly, 1, 3) == ("sf/") then
+Game.Players:Chat("spin me")
+wait(2)
+Game.Players:Chat("fly me")
+wait(1)
+Game.Players:Chat("unspin me")
+end
+end)
+
+plr.Chatted:Connect(function(Fly)
+if string.sub(Fly, 1, 4) == ("dark") then
+Game.Players:Chat("time 1")
+end
+end)
+
+plr.Chatted:Connect(function(Rrr)
+if string.sub(Rrr, 1, 3) == ("s/g") then
+Game.Players:Chat("god me")
+Game.Players:Chat("ff me")
+game.Players:Chat("particle me p")
+end
+end)
+
+plr.Chatted:Connect(function(Fly)
+if string.sub(Fly, 1, 6) == (";creepy") then
+Game.Players:Chat("music 143382469")
+Game.Players:Chat("time 1")
+Game.Players:Chat("fogend 100")
+Game.Players:Chat("fogstart .1")
+Game.Players:Chat("fogcolor 1 1 1")
+end
+end)
+
+plr.Chatted:Connect(function(Lka)
+if string.sub(Lka, 1, 8) == (";darkness") then
+Game.Players:Chat("time 1")
+Game.Players:Chat("fogend 100")
+Game.Players:Chat("fogstart 0.1")
+Game.Players:Chat("fogcolor 1 1 1")
+end
+end)
+
+
+plr.Chatted:Connect(function(ReQ)
+if string.sub(ReQ, 1, 5) == (";death") then
+Game.Players:Chat("time 1")
+Game.Players:Chat("fogend 100")
+game.Players:Chat("fogcolor 200 4 10")
+end
+end)
+
+plr.Chatted:Connect(function(ReQ)
+if string.sub(ReQ, 1) == (";giant") then
+Game.Players:Chat("size me 9.9")
+wait(.1)
+Game.Players:Chat("size me 10")
+end
+end)
+
+plr.Chatted:Connect(function(ReQ)
+if string.sub(ReQ, 1) == (";turkey") then
+Game.Players:Chat("music 188831155")
+wait(2)
+Game.Players:Chat("music -")
+end
+end)
+
+
+
+plr.Chatted:Connect(function(Yuu)
+	if string.sub(Yuu, 1) == (";creepy") then e = true
+	Game.Players:Chat("time 1")
+	wait(.1)
+	Game.Players:Chat("fogend 50")
+	wait(.1)
+	Game.Players:Chat("fogcolor 1 1 1")
+	wait(.1)
+	Game.Players:Chat("fogstart 0.1")
+     end
+end)
+
+
+
+function ccccc()
+    while vis ~= false do
+        wait(.1)
+        loudness = Game.Workspace.Terrain.GameFolder.Folder.Sound.PlaybackLoudness c = true
+	 fog = loudness * 2.7
+        fogend = fog / 3.9
+        game.Players:Chat("fogend "..fogend)
+    end
+end
+
+plr.Chatted:Connect(function(Yuu)
+    if string.sub(Yuu, 1) == (";creepy") then
+        Game.Players:Chat("music 143382469")
+	wait(.1)
+	Game.Players:Chat("outdoorambient 255 0 0")
+	wait(.1)
+        Game.Players:Chat("fogcolor 1 1 1")
+	wait(.1)
+        Game.Players:Chat("time 1")
+        vis = true
+        spawn(ccccc)
+        while e ~= false do
+Game.Players:Chat("brightness 10")
+wait(.1)
+Game.Players:Chat("brightness -10")
+wait(.1)
+Game.Players:Chat("brightness 1")
+wait(.1)
+            if workspace.Terrain.GameFolder.Folder.Sound.SoundId ~= "http://www.roblox.com/asset/?id=143382469" then
+                Game.Players:Chat("143382469")
+			c = true
+            end
+        end
+    end
+end)
+
+
+
+
+plr.Chatted:Connect(function(Fly)
+if string.sub(Fly, 1, 3) == ("b/p") then
+    wait(.1)
+    game.Players:Chat("give me clone")
+    wait(.1)
+    game.Players:Chat("h Fixed Baseplate")
+game.Players.LocalPlayer.Backpack.Move.setPos:FireServer(game.Workspace.Terrain.GameFolder.Workspace.Baseplate, game.Workspace.Terrain.GameFolder.Workspace.Spawn.CFrame)
+end
+end)
+
+plr.Chatted:Connect(function(Tlp)
+    if string.sub(Tlp, 1, 3) == ("r/j") then
+        wait(.4)
+        local tp = game:GetService("TeleportService")
+        local plr = game:GetService("Players").LocalPlayer
+        local Id = game.PlaceId
+        tp:Teleport(Id, p)
+    end
+end)
+
+
+
+plr.Chatted:Connect(function(auto)
+if string.sub(auto, 1) == (";rere") then
+wait(.1)
+vis=true
+game.Players:Chat("music 874362421")
+wait(.1)
+game.Players:Chat("fogcolor 127 0 255")
+wait(.1)
+game.Players:Chat("time 1")
+end
+end)
+
+plr.Chatted:Connect(function(visual)
+if string.sub(visual, 1, 3) == ("vis") then
+vis=true
+end
+end)
+
+plr.Chatted:Connect(function(novisual)
+if string.sub(novisual, 1, 5) == ("novis") then
+vis=false
+wait(1)
+game.Players:Chat("fix")
+end
+end)
+
+game:GetService"RunService".RenderStepped:Connect(function()
+if vis == true then
+loudness=Game.Workspace.Terrain.GameFolder.Folder.Sound.PlaybackLoudness
+fog = loudness / 4
+basefog = 250
+fogend = basefog - fog
+game.Players:Chat("fogend "..fogend)
+end
+end)
+
+plr.Chatted:Connect(function(auto)
+if string.sub(auto, 1) == (";auto") then
+wait(.1)
+vis=true
+game.Players:Chat("fogcolor 127 0 255")
+wait(.1)
+game.Players:Chat("time 1")
+end
+end)
+
+plr.Chatted:Connect(function(visual)
+if string.sub(visual, 1, 3) == ("vis") then
+vis=true
+end
+end)
+
+plr.Chatted:Connect(function(novisual)
+if string.sub(novisual, 1, 5) == ("novis") then
+vis=false
+wait(1)
+game.Players:Chat("fix")
+end
+end)
+
+game:GetService"RunService".RenderStepped:Connect(function()
+if vis == true then
+loudness=Game.Workspace.Terrain.GameFolder.Folder.Sound.PlaybackLoudness
+fog = loudness / 4
+basefog = 250
+fogend = basefog - fog
+game.Players:Chat("fogend "..fogend)
+end
+end)
+
+plr.Chatted:Connect(function(Yuu)
+    if string.sub(Yuu, 1, 2) == ("n/") then
+	wait(.1)
+        vis = false
+	wait(.1)
+        e = false
+	wait(.1)
+	v = false
+	wait(.1)
+        y = false
+	wait(.1)
+	r = false 
+	wait(.1)
+	d = false
+	wait(.1)
+	r = false
+	wait(.1)
+	q = false
+	wait(.1)
+	c = false
+	wait(.1)
+	ree = false
+	wait(.1)
+	d = false
+	wait(.1)
+	game.Players:Chat("fix")
+    end
+end)
+
+local LPlayer = game:GetService("Players").LocalPlayer
+local PLRS = game:GetService("Players")
+local LName = LPlayer.Name
+
+for plrIndex, v in pairs(PLRS:GetChildren()) do
+    v.Chatted:Connect(function(msg)
+        msg = msg:lower()
+        if string.match(msg, "swagify ") or string.match(msg, "swag ") and v.Name ~= LName  then
+			wait(0.1)
+			game.Players:Chat("reload all")
+			wait(.1)
+			game.Players:Chat("reload all")
+			wait(.1)
+			game.Players:Chat("reload all")
+			wait(.1)
+			game.Players:Chat("reload all")
+		end
+	end)
+end
+
+
+----------------------------------------------------------------------------------------------------------------
+
+game.Players.LocalPlayer.Chatted:Connect(function(mov)
+    if string.sub(mov, 1) == (";atom") then
+		wait(.1)
+		game.Players:Chat("size me .5")
+		wait(.1)
+		game.Players:Chat("size me .5")
+		wait(.1)
+		game.Players:Chat("size me .5")
+		wait(.1)
+		game.Players:Chat("size me .5")
+		wait(.1)
+		game.Players:Chat("size me .5")
+		wait(.1)
+		game.Players:Chat("size me .5")
+			wait(.1)
+		game.Players:Chat("size me .5")
+			wait(.1)
+		game.Players:Chat("size me .5")
+			wait(.1)
+		game.Players:Chat("size me .5")
+			wait(.1)
+		game.Players:Chat("size me .5")
+			wait(.1)
+		game.Players:Chat("size me .5")
+		wait(.1)
+		game.Players:Chat("speed me 1000000000")
+		wait(.2)
+		game.Players:Chat("invisble me")
+		wait(.2)
+		game.Players:Chat(";glassman")
+		wait(.2)
+		game.Players:Chat("name me ")
+	end
+end)
+
+----------------------------------------------------------------------------
+
+game.Players.LocalPlayer.Chatted:Connect(function(mov)
+    if string.sub(mov, 1) == (";fixmap") then
+		wait(.1)
+		game.Players:Chat("h Fixed Map.")
+game.Players.LocalPlayer.Backpack:FindFirstChild("Move").setPos:FireServer(workspace.Terrain.GameFolder.Workspace["Obby Box"]["Back Wall"], CFrame.new(-41.0649948, 16.5000076, -30.757, -1, 0, 0, 0, 1, 0, 0, 0, -1), Vector3.new(-41.065, 16.5, -30.757))
+		end
+    end)
+
+game.Players.LocalPlayer.Chatted:Connect(function(mov)
+    if string.sub(mov, 1) == (";fixmap") then
+game.Players.LocalPlayer.Backpack:FindFirstChild("Move").setPos:FireServer(workspace.Terrain.GameFolder.Workspace["Obby Box"]["Right Wall"], CFrame.new(-59.0650101, 16.5000038, 0.243000031, 0, 0, 1, 0, 1, -0, -1, 0, 0), Vector3.new(-59.065, 16.5, 0.243))
+		end
+    end)
+
+	game.Players.LocalPlayer.Chatted:Connect(function(mov)
+    if string.sub(mov, 1) == (";fixmap") then
+game.Players.LocalPlayer.Backpack:FindFirstChild("Move").setPos:FireServer(workspace.Terrain.GameFolder.Workspace["Obby Box"]["Left Wall"], CFrame.new(-23.0650024, 16.5000019, 0.243000031, 0, 0, 1, 0, 1, -0, -1, 0, 0), Vector3.new(-23.065, 16.5, 0.243))
+		end
+    end)
+
+	game.Players.LocalPlayer.Chatted:Connect(function(mov)
+    if string.sub(mov, 1) == (";fixmap") then
+game.Players.LocalPlayer.Backpack:FindFirstChild("Move").setPos:FireServer(workspace.Terrain.GameFolder.Workspace["Obby Box"]["Ceiling Wall"], CFrame.new(-41.0649872, 31.6999989, 1.24301004, 1, 0, 0, 0, 1, 0, 0, 0, 1), Vector3.new(-41.065, 31.7, 1.24301))
+		end
+    end)
+
+game.Players.LocalPlayer.Chatted:Connect(function(mov)
+    if string.sub(mov, 1) == (";fixmap") then
+		wait(.1)
+       for i,v in pairs(game.Workspace.Terrain.GameFolder.Workspace["Basic House"]:GetChildren()) do
+            game.Players.LocalPlayer.Backpack:FindFirstChild("Resize").resize:FireServer(v, Vector3.new(1000, 1.2, 1000), workspace.Terrain.GameFolder.Workspace.Spawn.Position)
+		end
+    end
